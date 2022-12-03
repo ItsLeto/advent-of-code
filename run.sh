@@ -4,5 +4,5 @@ else
     mkdir bin
 fi
 
-g++ src/aoc${1}.cpp -std=c++17 -o bin/aoc${1}.out
-./bin/aoc${1}.out
+g++ src/day_${1}.cpp -std=c++17 -o bin/day_${1}.out
+./bin/day_${1}.out

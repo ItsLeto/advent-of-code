@@ -9,14 +9,15 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-include_directories(.)
+include_directories(inc)
 
 # Main application
 add_executable(main
-    main.cpp
+    src/advent_of_code.cpp
     src/day_01.cpp
     src/day_02.cpp
     src/day_03.cpp
+    src/day_04.cpp
 )
 
 ADD_CUSTOM_COMMAND(TARGET main

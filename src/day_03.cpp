@@ -54,7 +54,7 @@ u64 part2(std::string const& file_name)
       bags.push_back(items);
     }
   }
-  for (auto i = 0; i < bags.size(); i += 3) {
+  for (size_t i = 0; i < bags.size(); i += 3) {
     std::vector<int> common;
     std::vector<int> v;
     set_intersection(bags[i].begin(), bags[i].end(), bags[i + 1].begin(), bags[i + 1].end(), std::back_inserter(common));
