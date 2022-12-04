@@ -22,6 +22,16 @@ add_executable(main
     src/utils.cpp
 )
 
+add_executable(main_improved
+    src/advent_of_code.cpp
+    src/day_01.cpp
+    src/day_02.cpp
+    src/day_03.cpp
+    src/day_04_improved.cpp
+    src/day_05.cpp
+    src/utils.cpp
+)
+
 ADD_CUSTOM_COMMAND(TARGET main
           POST_BUILD
           COMMAND ${CMAKE_COMMAND} -E make_directory ${PROJECT_BINARY_DIR}
