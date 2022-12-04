@@ -111,3 +111,10 @@ using f32 = float;
 using f64 = double;
 
 using Solution = std::pair<u64, u64>;
+
+namespace aoc::utils
+{
+
+std::pair<std::string, std::string> split_line(std::string const& str, const char* delimiter);
+
+} // namespace aoc::utils

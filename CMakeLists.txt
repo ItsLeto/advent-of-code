@@ -19,6 +19,7 @@ add_executable(main
     src/day_03.cpp
     src/day_04.cpp
     src/day_05.cpp
+    src/utils.cpp
 )
 
 ADD_CUSTOM_COMMAND(TARGET main

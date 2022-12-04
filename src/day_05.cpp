@@ -1,4 +1,4 @@
-#include "template.hpp"
+#include "utils.h"
 
 namespace day_05
 {

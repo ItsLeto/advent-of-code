@@ -1,5 +1,5 @@
 #include "days.h"
-#include "template.hpp"
+#include "utils.h"
 int main(int argc, char const* argv[])
 {
   std::ios_base::sync_with_stdio(false), std::cin.tie(nullptr), std::cout.tie(nullptr);

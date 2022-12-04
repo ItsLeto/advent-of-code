@@ -1,4 +1,4 @@
-#include "template.hpp"
+#include "utils.h"
 
 namespace day_04
 {
@@ -22,8 +22,7 @@ u64 part1(std::string const& file_name)
     if (text.empty()) {
     }
     else {
-      std::string range1 = text.substr(0, text.find(','));
-      std::string range2 = text.substr(text.find(',') + 1);
+      auto [range1, range2] = aoc::utils::split_line(text, ",");
 
       auto sections1 = create_sections(range1);
       auto sections2 = create_sections(range2);
@@ -52,8 +51,7 @@ u64 part2(std::string const& file_name)
     if (text.empty()) {
     }
     else {
-      std::string range1 = text.substr(0, text.find(','));
-      std::string range2 = text.substr(text.find(',') + 1);
+      auto [range1, range2] = aoc::utils::split_line(text, ",");
 
       auto sections1 = create_sections(range1);
       auto sections2 = create_sections(range2);
