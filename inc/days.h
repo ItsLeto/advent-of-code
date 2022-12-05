@@ -23,5 +23,5 @@ Solution solve(string const& file_name);
 
 namespace day_05
 {
-Solution solve(string const& file_name);
+std::pair<std::string, std::string> solve(string const& file_name);
 } // namespace day_05

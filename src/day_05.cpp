@@ -3,30 +3,29 @@
 namespace day_05
 {
 
-vector<char> split(string line)
+vector<char> split(std::string const& line)
 {
-  vector<char> p;
+  std::vector<char> p;
   for (int i = 0; i < line.size(); i += 4) {
-    debug() << imie(i) << line.size();
-    string c = line.substr(i, 3);
-    debug() << "'" << c << "'";
-    p.push_back(c[1]);
+    // Middle of the crate holds the letter this would be index 1 for the first and 4 more for each subsequent crate
+    // [A] [B] [C]
+    // [A]  _  [C]
+    p.push_back(line[i + 1]);
   }
   return p;
 }
 
-u64 part1(std::string const& file_name)
+struct Move
 {
-  u64 total_sum{0};
+  int a;
+  int f;
+  int t;
+};
 
-  struct Move
-  {
-    int a;
-    int f;
-    int t;
-  };
-  vector<Move> moves;
-  vector<deque<char>> stacks(9);
+std::string part1(std::string const& file_name)
+{
+  std::vector<Move> moves;
+  std::vector<std::deque<char>> stacks(9);
 
   std::fstream in(file_name);
   std::string text;
@@ -34,7 +33,7 @@ u64 part1(std::string const& file_name)
     if (text.empty()) {
     }
     else {
-      if (text.find("[") != std::string::npos) {
+      if (text.find('[') != std::string::npos) {
         // split in cols
         auto creats = split(text);
         for (int idx{0}; idx < creats.size(); ++idx) {
@@ -46,53 +45,31 @@ u64 part1(std::string const& file_name)
       else if (text[0] == 'm') {
         int a, f, t;
         sscanf(text.c_str(), "move %d from %d to %d", &a, &f, &t);
-        debug() << imie(a) << imie(f) << imie(t);
         moves.push_back({a, f - 1, t - 1});
-      }
-      else {
-        cout << "ERROR" << endl;
       }
     }
   }
 
-  // for (auto& s : stacks) {
-  // debug() << s;
-
   for (auto move : moves) {
-    cout << imie(move.a) << endl;
-    cout << imie(move.f) << endl;
-    cout << imie(move.t) << endl;
-    cout << imie(stacks.size()) << endl;
     for (int i = 0; i < move.a; ++i) {
       stacks[move.t].push_front(stacks[move.f].front());
       stacks[move.f].pop_front();
     }
   }
 
-  string r = "";
+  std::string result;
   for (auto s : stacks) {
-    if (s.empty()) continue;
-    cout << imie(s.size()) << endl;
-    r += s.front();
+    if (!s.empty()) {
+      result += s.front();
+    }
   }
-  cout << imie(r);
-
-  return total_sum;
+  return result;
 }
 
-u64 part2(std::string const& file_name)
+std::string part2(std::string const& file_name)
 {
-  u64 total_sum{0};
-
-
-  struct Move
-  {
-    int a;
-    int f;
-    int t;
-  };
-  vector<Move> moves;
-  vector<deque<char>> stacks(9);
+  std::vector<Move> moves;
+  std::vector<std::deque<char>> stacks(9);
 
   std::fstream in(file_name);
   std::string text;
@@ -100,7 +77,7 @@ u64 part2(std::string const& file_name)
     if (text.empty()) {
     }
     else {
-      if (text.find("[") != std::string::npos) {
+      if (text.find('[') != std::string::npos) {
         // split in cols
         auto creats = split(text);
         for (int idx{0}; idx < creats.size(); ++idx) {
@@ -112,20 +89,13 @@ u64 part2(std::string const& file_name)
       else if (text[0] == 'm') {
         int a, f, t;
         sscanf(text.c_str(), "move %d from %d to %d", &a, &f, &t);
-        debug() << imie(a) << imie(f) << imie(t);
         moves.push_back({a, f - 1, t - 1});
-      }
-      else {
-        cout << "ERROR" << endl;
       }
     }
   }
 
-  // for (auto& s : stacks) {
-  // debug() << s;
-
   for (auto move : moves) {
-    deque<char> crane;
+    std::deque<char> crane;
     for (int i = 0; i < move.a; ++i) {
       crane.push_back(stacks[move.f].front());
       stacks[move.f].pop_front();
@@ -134,21 +104,18 @@ u64 part2(std::string const& file_name)
       stacks[move.t].push_front(crane.back());
       crane.pop_back();
     }
-
   }
 
-  string r = "";
+  std::string result;
   for (auto s : stacks) {
-    if (s.empty()) continue;
-    cout << imie(s.size()) << endl;
-    r += s.front();
+    if (!s.empty()) {
+      result += s.front();
+    }
   }
-  cout << imie(r);
-
-  return total_sum;
+  return result;
 }
 
-Solution solve(std::string const& file_name)
+std::pair<std::string, std::string> solve(std::string const& file_name)
 {
   return {part1(file_name), part2(file_name)};
 }
