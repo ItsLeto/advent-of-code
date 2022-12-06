@@ -25,3 +25,8 @@ namespace day_05
 {
 std::pair<std::string, std::string> solve(string const& file_name);
 } // namespace day_05
+
+namespace day_06
+{
+Solution solve(string const& file_name);
+} // namespace day_06
