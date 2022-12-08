@@ -21,6 +21,7 @@ add_executable(main
     src/day_05.cpp
     src/day_06.cpp
     src/day_07.cpp
+    src/day_08.cpp
     src/utils.cpp
     )
 
@@ -33,6 +34,7 @@ add_executable(main_improved
     src/day_05.cpp
     src/day_06.cpp
     src/day_07.cpp
+    src/day_08.cpp
     src/utils.cpp
 )
 

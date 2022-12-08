@@ -35,3 +35,8 @@ namespace day_07
 {
 Solution solve(string const& file_name);
 } // namespace day_07
+
+namespace day_08
+{
+Solution solve(string const& file_name);
+} // namespace day_08
