@@ -12,7 +12,7 @@ auto create_sections(std::string const& range) -> std::vector<u64>
   return sections;
 }
 
-Solution solve(std::string const& file_name)
+Solution<u64> solve(std::string const& file_name)
 {
   u64 number_of_pairs_that_fully_overlap{0};
   u64 number_of_pairs_that_overlap{0};

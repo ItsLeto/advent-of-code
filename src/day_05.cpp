@@ -22,7 +22,7 @@ struct Move
   u64 id_to;
 };
 
-std::pair<std::string, std::string> solve(std::string const& file_name)
+Solution<std::string> solve(std::string const& file_name)
 {
   std::vector<Move> moves;
   std::vector<std::deque<char>> stacks(9);

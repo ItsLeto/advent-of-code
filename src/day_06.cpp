@@ -3,7 +3,7 @@
 namespace day_06
 {
 
-Solution solve(std::string const& file_name)
+Solution<u64> solve(std::string const& file_name)
 {
   u64 part1{0};
   u64 part2{0};

@@ -110,7 +110,8 @@ using u64 = uint64_t;
 using f32 = float;
 using f64 = double;
 
-using Solution = std::pair<u64, u64>;
+template<typename T>
+using Solution = std::pair<T, T>;
 
 namespace aoc::utils
 {

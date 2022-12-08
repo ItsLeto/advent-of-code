@@ -58,7 +58,7 @@ u64 part2(std::string const& file_name)
   return number_of_pairs_that_overlap;
 }
 
-Solution solve(std::string const& file_name)
+Solution<u64> solve(std::string const& file_name)
 {
   return {part1(file_name), part2(file_name)};
 }
