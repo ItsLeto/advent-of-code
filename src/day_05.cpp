@@ -17,12 +17,12 @@ vector<char> split(std::string const& line)
 
 struct Move
 {
-  int a;
-  int f;
-  int t;
+  u64 amount;
+  u64 id_from;
+  u64 id_to;
 };
 
-std::string part1(std::string const& file_name)
+std::pair<std::string, std::string> solve(std::string const& file_name)
 {
   std::vector<Move> moves;
   std::vector<std::deque<char>> stacks(9);
@@ -31,93 +31,65 @@ std::string part1(std::string const& file_name)
   std::string text;
   while (std::getline(in, text)) {
     if (text.empty()) {
+      continue;
     }
-    else {
-      if (text.find('[') != std::string::npos) {
-        // split in cols
-        auto creats = split(text);
-        for (int idx{0}; idx < creats.size(); ++idx) {
-          if (creats[idx] != ' ') {
-            stacks[idx].push_back(creats[idx]);
-          }
+
+    if (text.find('[') != std::string::npos) {
+      // split in cols
+      auto crates = split(text);
+      for (size_t idx{0}; idx < crates.size(); ++idx) {
+        if (crates[idx] != ' ') {
+          stacks[idx].push_back(crates[idx]);
         }
       }
-      else if (text[0] == 'm') {
-        int a, f, t;
-        sscanf(text.c_str(), "move %d from %d to %d", &a, &f, &t);
-        moves.push_back({a, f - 1, t - 1});
-      }
+    }
+    else if (text[0] == 'm') {
+      u64 amount;
+      u64 id_from;
+      u64 id_to;
+      sscanf(text.c_str(), "move %lu from %lu to %lu", &amount, &id_from, &id_to);
+      moves.push_back({amount, id_from - 1, id_to - 1});
     }
   }
 
+  // Part 1
+  auto stacks1 = stacks;
   for (auto move : moves) {
-    for (int i = 0; i < move.a; ++i) {
-      stacks[move.t].push_front(stacks[move.f].front());
-      stacks[move.f].pop_front();
+    for (int i = 0; i < move.amount; ++i) {
+      stacks1[move.id_to].push_front(stacks1[move.id_from].front());
+      stacks1[move.id_from].pop_front();
     }
   }
 
-  std::string result;
-  for (auto s : stacks) {
+  std::string part1;
+  for (auto s : stacks1) {
     if (!s.empty()) {
-      result += s.front();
-    }
-  }
-  return result;
-}
-
-std::string part2(std::string const& file_name)
-{
-  std::vector<Move> moves;
-  std::vector<std::deque<char>> stacks(9);
-
-  std::fstream in(file_name);
-  std::string text;
-  while (std::getline(in, text)) {
-    if (text.empty()) {
-    }
-    else {
-      if (text.find('[') != std::string::npos) {
-        // split in cols
-        auto creats = split(text);
-        for (int idx{0}; idx < creats.size(); ++idx) {
-          if (creats[idx] != ' ') {
-            stacks[idx].push_back(creats[idx]);
-          }
-        }
-      }
-      else if (text[0] == 'm') {
-        int a, f, t;
-        sscanf(text.c_str(), "move %d from %d to %d", &a, &f, &t);
-        moves.push_back({a, f - 1, t - 1});
-      }
+      part1 += s.front();
     }
   }
 
+  // Part 2
+  auto stacks2 = stacks;
   for (auto move : moves) {
     std::deque<char> crane;
-    for (int i = 0; i < move.a; ++i) {
-      crane.push_back(stacks[move.f].front());
-      stacks[move.f].pop_front();
+    for (int i = 0; i < move.amount; ++i) {
+      crane.push_back(stacks2[move.id_from].front());
+      stacks2[move.id_from].pop_front();
     }
-    for (int i = 0; i < move.a; ++i) {
-      stacks[move.t].push_front(crane.back());
+    for (int i = 0; i < move.amount; ++i) {
+      stacks2[move.id_to].push_front(crane.back());
       crane.pop_back();
     }
   }
 
-  std::string result;
-  for (auto s : stacks) {
+  std::string part2;
+  for (auto s : stacks2) {
     if (!s.empty()) {
-      result += s.front();
+      part2 += s.front();
     }
   }
-  return result;
-}
 
-std::pair<std::string, std::string> solve(std::string const& file_name)
-{
-  return {part1(file_name), part2(file_name)};
+  return {part1, part2};
 }
 
 } // namespace day_05

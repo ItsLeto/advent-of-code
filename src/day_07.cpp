@@ -86,7 +86,6 @@ Solution solve(std::string const& file_name)
     if (text.empty()) {
       continue;
     }
-    cout << text << endl;
 
     if (text[0] == '$') {
       if (text == "$ cd ..") {
@@ -120,7 +119,7 @@ Solution solve(std::string const& file_name)
     }
   }
 
-  std::cout << root->repr();
+  // std::cout << root->repr();
 
   // Part 1
   auto dir_sizes = root->get_sizes_of_all_subdirs();
