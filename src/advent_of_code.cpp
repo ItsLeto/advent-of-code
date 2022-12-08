@@ -48,5 +48,12 @@ int main(int argc, char const* argv[])
     std::cout << "  Part2: " << part2 << std::endl;
   }
 
+  {
+    auto [part1, part2] = day_07::solve("inputs/7.in");
+    std::cout << "Day 07" << std::endl;
+    std::cout << "  Part1: " << part1 << std::endl;
+    std::cout << "  Part2: " << part2 << std::endl;
+  }
+
   return 0;
 }

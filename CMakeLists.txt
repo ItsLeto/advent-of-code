@@ -20,8 +20,9 @@ add_executable(main
     src/day_04.cpp
     src/day_05.cpp
     src/day_06.cpp
+    src/day_07.cpp
     src/utils.cpp
-)
+    )
 
 add_executable(main_improved
     src/advent_of_code.cpp
@@ -30,6 +31,8 @@ add_executable(main_improved
     src/day_03.cpp
     src/day_04_improved.cpp
     src/day_05.cpp
+    src/day_06.cpp
+    src/day_07.cpp
     src/utils.cpp
 )
 
