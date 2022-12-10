@@ -23,6 +23,7 @@ add_executable(main
     src/day_07.cpp
     src/day_08.cpp
     src/day_09.cpp
+    src/day_10.cpp
     src/utils.cpp
 )
 
