@@ -50,3 +50,8 @@ namespace day_10
 {
 auto solve(string const& file_name) -> Solution<std::string>;
 } // namespace day_10
+
+namespace day_11
+{
+auto solve(string const& file_name) -> Solution<u64>;
+} // namespace day_11
