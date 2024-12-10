@@ -2,6 +2,8 @@
 
 #include "bits/stdc++.h"
 
+// NOLINTBEGIN
+
 using namespace std;
 #define LOCAL
 using namespace std;
@@ -109,6 +111,8 @@ using i64 = int64_t;
 using u64 = uint64_t;
 using f32 = float;
 using f64 = double;
+
+// NOLINTEND
 
 template<typename T>
 using Solution = std::pair<T, T>;
